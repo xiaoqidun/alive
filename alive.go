@@ -53,7 +53,7 @@ func runAsAdmin() {
 		windows.StringToUTF16Ptr(exe),
 		windows.StringToUTF16Ptr(strings.Join(args, " ")),
 		windows.StringToUTF16Ptr(cwd),
-		windows.SW_SHOWNORMAL,
+		windows.SW_HIDE,
 	)
 	os.Exit(0)
 }
