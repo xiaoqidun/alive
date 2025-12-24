@@ -35,6 +35,7 @@ func main() {
 		os.Exit(1)
 	}
 	cmd := exec.Command("tscon", strconv.FormatUint(uint64(sid), 10), "/dest:console")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	if cmd.Run() != nil {
 		os.Exit(1)
 	}
@@ -53,7 +54,7 @@ func runAsAdmin() {
 		windows.StringToUTF16Ptr(exe),
 		windows.StringToUTF16Ptr(strings.Join(args, " ")),
 		windows.StringToUTF16Ptr(cwd),
-		windows.SW_HIDE,
+		windows.SW_SHOWNORMAL,
 	)
 	os.Exit(0)
 }
